@@ -1,14 +1,17 @@
 <template>
   <div class="header">
     <ul class="header-button-left">
-      <li>Cancel</li>
+      <li>Vuestagram</li>
     </ul>
-    <ul class="header-button-right">
+    <!-- <ul class="header-button-left">
+      <li>Cancel</li>
+    </ul> -->
+    <!-- <ul class="header-button-right">
       <li>Next</li>
     </ul>
     <ul class="logo">
       <li>Vuestagram</li>
-    </ul>
+    </ul> -->
   </div>
 
   <Container :instaData="instaData"/>
@@ -41,7 +44,8 @@ export default {
 <style>
 body {
   margin: 0;
-  padding-bottom: 38px;
+  padding-bottom: 48px;
+  background-color: black;
 }
 ul {
   padding: 5px;
