@@ -1,0 +1,28 @@
+<template>
+   <div>
+    <Post :data="instaData"></Post>
+    </div>
+</template>
+
+<script>
+import Post from '@/components/Post.vue';
+export default {
+    name: "Container",
+    props:{
+        instaData: Object
+    },
+    components: {
+        Post
+    },
+    data(){
+        return{
+        }
+    }
+}
+</script>
+
+<style>
+    div{
+        background-color: black;
+    }
+</style>
