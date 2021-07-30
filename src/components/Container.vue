@@ -1,6 +1,10 @@
 <template>
    <div>
-    <Post :data="instaData"></Post>
+    <Post 
+        :data="data" 
+        v-for="(data,idx) in instaData" 
+        :key="idx"
+    ></Post>
     </div>
 </template>
 

@@ -1,14 +1,14 @@
 <template>
-  <div class="post" v-for="d in data" :key="d">
+  <div class="post">
     <div class="post-header">
-      <div class="profile"></div>
-      <span class="profile-name">{{d.name}}</span>
+      <div class="profile" :style="{ backgroundImage:`url(${data.userImage})`}"></div>
+      <span class="profile-name">{{data.name}}</span>
     </div>
-    <div class="post-body"></div>
+    <div class="post-body" :style="{ backgroundImage:`url(${data.postImage})`}"></div>
     <div class="post-content">
-      <p>{{d.likes}} Likes</p>
-      <p><strong>글쓴이아이디</strong> {{d.content}}</p>
-      <p class="date">{{d.date}}</p>
+      <p>{{data.likes}} Likes</p>
+      <p><strong>글쓴이아이디</strong> {{data.content}}</p>
+      <p class="date">{{data.date}}</p>
     </div>
 </div> 
 </template>
@@ -16,7 +16,7 @@
 <script>
 export default {
   props:{
-    data : Array,
+    data : Object,
   }
 }
 </script>
