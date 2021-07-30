@@ -3,6 +3,13 @@
     <ul class="header-button-left">
       <li>Vuestagram</li>
     </ul>
+    <div class="flex-container" style="width:100%">
+      <button class="show-button" @click="showMore">
+        더보기
+      </button>
+    </div>
+   
+
     <!-- <ul class="header-button-left">
       <li>Cancel</li>
     </ul> -->
@@ -15,6 +22,7 @@
   </div>
 
   <Container :instaData="instaData"/>
+  
   <div class="flex-container">
     <div class="footer">
       <ul class="footer-button-plus">
@@ -29,17 +37,36 @@
 <script>
 import Container from '@/components/Container.vue';
 import instaData from './assets/data';
+import axios from 'axios';
 
 export default {
   name: "App", 
   data(){
     return{
-      instaData: instaData
+      instaData: instaData,
+      buttonCount:0,
     }
   },
   components: {
     Container
   },
+  methods:{
+    showMore(){
+      //성공시 then 
+      //실패시 catch 
+      // axios.post('url',{name:'sung'}).then().catch((err)=>{
+      //   console.log(err);
+      // })
+
+      axios.get(`https://codingapple1.github.io/vue/more${this.buttonCount}.json`)
+      .then(response=>{
+        //화살표 사용시 this 사용 가능 
+        // 요청 성공시 
+        this.instaData.push(response.data);
+        this.buttonCount++;
+      })
+    }
+  }
 };
 </script>
 
@@ -70,6 +97,13 @@ ul {
   padding-bottom: 8px;
   position: sticky;
   top: 0;
+}
+.show-button{
+  border: 1px solid #191919;
+  border-radius: 30px;
+  background-color: #191919;
+  padding: 2px 7px;
+  color: white;
 }
 .header-button-left {
   color: white;
