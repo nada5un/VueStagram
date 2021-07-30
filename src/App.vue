@@ -15,21 +15,23 @@
   </div>
 
   <Container :instaData="instaData"/>
-
-  <div class="footer">
-    <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
-      <label for="file" class="input-plus">+</label>
-    </ul>
+  <div class="flex-container">
+    <div class="footer">
+      <ul class="footer-button-plus">
+        <input type="file" id="file" class="inputfile" />
+        <label for="file" class="input-plus">+</label>
+      </ul>
+    </div>
   </div>
+  
 </template>
 
 <script>
 import Container from '@/components/Container.vue';
-import instaData from './data';
+import instaData from './assets/data';
 
 export default {
-  name: "App",
+  name: "App", 
   data(){
     return{
       instaData: instaData
@@ -84,6 +86,10 @@ ul {
   cursor: pointer;
   margin-top: 10px;
 }
+.flex-container{
+  display: flex;
+  justify-content: center;
+}
 .footer {
   width: 100%;
   height: 40px;
@@ -120,7 +126,5 @@ ul {
   max-width: 460px;
   margin: auto;
   position: relative;
-  border-right: 1px solid #eee;
-  border-left: 1px solid #eee;
 }
 </style>
