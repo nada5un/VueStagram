@@ -24,10 +24,8 @@
     </div>
   </div>
 
-  <!-- <h4>안녕 {{$store.state.name}}</h4>
-  <button @click="$store.state.name='박'">버튼</button> -->
-
   <Container :instaData="instaData" :step="step" :imageUrl="imageUrl" @emitPostText="emitPostText"/>
+  
   <!--footer-->
   <div class="flex-container" v-if="step==0">
     <div class="footer">
@@ -43,6 +41,7 @@
 import Container from '@/components/Container.vue';
 import instaData from './assets/data';
 import axios from 'axios';
+import {mapState} from 'vuex'
 
 export default {
   name: "App", 
@@ -64,6 +63,12 @@ export default {
   components: {
     Container
   },
+  computed:{
+    name(){
+      return this.$store.state.name
+    },
+    ...mapState(['name','age','likes']),
+  },
   methods:{
     showMore(){
       //성공시 then 
@@ -71,6 +76,7 @@ export default {
       // axios.post('url',{name:'sung'}).then().catch((err)=>{
       //   console.log(err);
       // })
+      // this.$store.dispatch("getPost",this.buttonCount);
       axios.get(`https://codingapple1.github.io/vue/more${this.buttonCount}.json`)
       .then(response=>{
         //화살표 사용시 this 사용 가능 
@@ -102,6 +108,7 @@ export default {
       };
       this.instaData.unshift(post);
       this.step=0;
+      this.$store.commit("AddLikes");
     }
   }
 };

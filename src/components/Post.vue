@@ -4,19 +4,22 @@
       <div class="profile" :style="{ backgroundImage:`url(${data.userImage})`}"></div>
       <span class="profile-name">{{data.name}}</span>
     </div>
-    <div :class="data.filter" class="post-body" :style="{ backgroundImage:`url(${data.postImage})`}"></div>
+    <div :class="data.filter" class="post-body" :style="{ backgroundImage:`url(${data.postImage})`}"
+      @click="$store.commit('updateLikes',this.idx)"
+    ></div>
     <div class="post-content">
-      <p>{{data.likes}} Likes</p>
+      <p>{{$store.state.likes[idx]}} Likes</p>
       <p><strong>글쓴이아이디</strong> {{data.content}}</p>
       <p class="date">{{data.date}}</p>
     </div>
 </div> 
 </template>
 
-<script>
+<script> 
 export default {
   props:{
     data : Object,
+    idx: Number,
   },
   data(){
     return{

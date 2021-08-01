@@ -5,6 +5,7 @@
             :data="data" 
             v-for="(data,idx) in instaData" 
             :key="idx"
+            :idx="idx"
         ></Post>
        </div>
         
