@@ -24,6 +24,9 @@
     </div>
   </div>
 
+  <!-- <h4>안녕 {{$store.state.name}}</h4>
+  <button @click="$store.state.name='박'">버튼</button> -->
+
   <Container :instaData="instaData" :step="step" :imageUrl="imageUrl" @emitPostText="emitPostText"/>
   <!--footer-->
   <div class="flex-container" v-if="step==0">
