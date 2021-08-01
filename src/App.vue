@@ -25,10 +25,10 @@
   </div>
 
   <Container :instaData="instaData" :step="step" :imageUrl="imageUrl" @emitPostText="emitPostText"/>
-  
+  <!--footer-->
   <div class="flex-container" v-if="step==0">
     <div class="footer">
-      <ul class="footer-button-plus">
+      <ul class="footer-button-plus" >
         <input @change="upload" type="file" id="file" class="inputfile"/>
         <label for="file" class="input-plus">+</label>
       </ul>
@@ -50,7 +50,13 @@ export default {
       step:0,
       imageUrl:'',
       postText:'',
+      filter:'',
     }
+  },
+  mounted(){
+    this.emitter.on("filter",(a)=>{
+      console.log(a);
+    })
   },
   components: {
     Container

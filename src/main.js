@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-// import 'bootstrap'
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import mitt from 'mitt'
+let emitter = mitt();
+let app = createApp()
+app.config.globalProperties.emitter = emitter;
 
 createApp(App).mount('#app')

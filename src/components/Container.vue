@@ -12,11 +12,9 @@
         <div v-if="step==1">
             <div class="upload-image" :style="`background-image:url(${imageUrl})`"></div>
             <div class="filters">
-                <div class="filter-1"></div>
-                <div class="filter-1"></div>
-                <div class="filter-1"></div>
-                <div class="filter-1"></div>
-                <div class="filter-1"></div>
+                <FilterBox :imageUrl="imageUrl" v-for="filter in filters" :key="filter" :filter="filter">
+                    {{filter}}
+                </FilterBox>
             </div>
         </div>
         
@@ -39,6 +37,9 @@
 
 <script>
 import Post from '@/components/Post.vue';
+import FilterBox from '@/components/FilterBox.vue';
+import filters from '@/assets/filter'
+
 export default {
     name: "Container",
     props:{
@@ -47,10 +48,12 @@ export default {
         imageUrl:String,
     },
     components: {
-        Post
+        Post,
+        FilterBox,
     },
     data(){
         return{
+            filters: filters
         }
     },
     methods:{
@@ -62,7 +65,7 @@ export default {
 .upload-image{
 width: 100%;
 height: 450px;
-background: #ddd;
+background: black;
 background-size : cover;
 }
 .filters{
@@ -72,7 +75,7 @@ white-space: nowrap;
 .filter-1 {
 width: 100px;
 height: 100px;
-background-color: #ddd;
+background-color: black;
 margin: 10px 10px 10px auto;
 padding: 8px;
 display: inline-block;
