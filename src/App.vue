@@ -1,37 +1,39 @@
 <template>
   <div class="header">
-    <ul class="header-button-left">
+    <ul class="header-button-left"  v-if="step==0">
       <li>Vuestagram</li>
     </ul>
-    <div class="flex-container" style="width:100%">
+    <div v-if="step>0">
+      <ul class="header-button-left">
+        <li>X</li>
+      </ul>
+      <ul class="logo">
+        <li>새 게시물</li>
+      </ul>
+      <ul class="header-button-right" v-if="step==1">
+        <li @click="step++;">다음</li>
+      </ul>
+      <ul class="header-button-right" v-if="step==2">
+        <li @click="publish">공유</li>
+      </ul>
+    </div>
+    <div class="flex-container" style="width:100%" v-if="step==0">
       <button class="show-button" @click="showMore">
         더보기
       </button>
     </div>
-   
-
-    <!-- <ul class="header-button-left">
-      <li>Cancel</li>
-    </ul> -->
-    <!-- <ul class="header-button-right">
-      <li>Next</li>
-    </ul>
-    <ul class="logo">
-      <li>Vuestagram</li>
-    </ul> -->
   </div>
 
-  <Container :instaData="instaData"/>
+  <Container :instaData="instaData" :step="step" :imageUrl="imageUrl" @emitPostText="emitPostText"/>
   
-  <div class="flex-container">
+  <div class="flex-container" v-if="step==0">
     <div class="footer">
       <ul class="footer-button-plus">
-        <input type="file" id="file" class="inputfile" />
+        <input @change="upload" type="file" id="file" class="inputfile"/>
         <label for="file" class="input-plus">+</label>
       </ul>
     </div>
   </div>
-  
 </template>
 
 <script>
@@ -45,6 +47,9 @@ export default {
     return{
       instaData: instaData,
       buttonCount:0,
+      step:0,
+      imageUrl:'',
+      postText:'',
     }
   },
   components: {
@@ -57,7 +62,6 @@ export default {
       // axios.post('url',{name:'sung'}).then().catch((err)=>{
       //   console.log(err);
       // })
-
       axios.get(`https://codingapple1.github.io/vue/more${this.buttonCount}.json`)
       .then(response=>{
         //화살표 사용시 this 사용 가능 
@@ -65,6 +69,30 @@ export default {
         this.instaData.push(response.data);
         this.buttonCount++;
       })
+    },
+    upload(e){
+      let file = e.target.files;
+      console.log(file[0]);
+      this.imageUrl = URL.createObjectURL(file[0]);
+      this.step ++;
+    },
+    emitPostText(text){
+      this.postText = text;
+    },
+    //글 발행 
+    publish(){
+      var post = {
+        name: "Kim Hyun",
+        userImage: "https://placeimg.com/100/100/arch",
+        postImage: this.imageUrl,
+        likes: 36,
+        date: "May 15",
+        liked: false,
+        content: this.postText,
+        filter: "perpetua"
+      };
+      this.instaData.unshift(post);
+      this.step=0;
     }
   }
 };
@@ -75,24 +103,25 @@ body {
   margin: 0;
   padding-bottom: 48px;
   background-color: black;
+  color: white;
 }
 ul {
   padding: 5px;
   list-style-type: none;
 }
 .logo {
-  width: 50px;
+  width: 60px;
   margin: auto;
   display: block;
   position: absolute;
   left: 0;
   right: 0;
-  top: 10px;
+  top: 15px;
   color: white;
 }
 .header {
   width: 100%;
-  height: 40px;
+  height: 45px;
   background-color: black;
   padding-bottom: 8px;
   position: sticky;
@@ -111,14 +140,14 @@ ul {
   width: 50px;
   padding-left: 20px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .header-button-right {
-  color: white;
+  color: skyblue;
   float: right;
   width: 50px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .flex-container{
   display: flex;
@@ -152,6 +181,7 @@ ul {
 .input-plus {
   cursor: pointer;
 }
+
 #app {
   box-sizing: border-box;
   font-family: "consolas";
