@@ -54,9 +54,9 @@ export default {
     }
   },
   mounted(){
-    this.emitter.on("filter",(a)=>{
-      console.log(a);
-    })
+    this.emitter.on("filterName",(filter)=>{
+      this.filter = filter;
+    });
   },
   components: {
     Container
@@ -95,7 +95,7 @@ export default {
         date: "May 15",
         liked: false,
         content: this.postText,
-        filter: "perpetua"
+        filter: this.filter
       };
       this.instaData.unshift(post);
       this.step=0;

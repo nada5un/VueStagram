@@ -3,8 +3,7 @@
     <div class="filter-title">
       <slot></slot>
     </div>
-    <div :class="`${filter} filter-image`" :style="{ backgroundImage:`url(${imageUrl})`}">
-      <!-- <button @click="fire">버튼</button> -->
+    <div :class="`${filter} filter-image`" :style="{ backgroundImage:`url(${imageUrl})`}" @click="filterName(this.filter)">
     </div>   
   </div>
     
@@ -16,6 +15,11 @@ export default {
     props:{
       imageUrl:String,
       filter:String,
+    },
+    methods:{
+      filterName(filter){
+        this.emitter.emit('filterName',filter);
+      }
     }
 }
 </script>

@@ -10,7 +10,7 @@
         
         <!-- 필터선택페이지 -->
         <div v-if="step==1">
-            <div class="upload-image" :style="`background-image:url(${imageUrl})`"></div>
+            <div :class="`${filter} upload-image`" :style="`background-image:url(${imageUrl})`"></div>
             <div class="filters">
                 <FilterBox :imageUrl="imageUrl" v-for="filter in filters" :key="filter" :filter="filter">
                     {{filter}}
@@ -20,7 +20,7 @@
         
         <!-- 글작성페이지 -->
         <div v-if="step==2">
-            <div class="upload-image" :style="{ backgroundImage:`url(${imageUrl})`}"></div>
+            <div :class="`${filter} upload-image`" :style="{ backgroundImage:`url(${imageUrl})`}"></div>
             <div class="write">
                 <textarea 
                     class="write-box"
@@ -53,11 +53,17 @@ export default {
     },
     data(){
         return{
-            filters: filters
+            filters: filters,
+            filter:'',
         }
     },
     methods:{
-    }
+    },
+    mounted(){
+        this.emitter.on("filterName",(filter)=>{
+        this.filter = filter;
+    });
+  },
 }
 </script>
 
