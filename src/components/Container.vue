@@ -32,6 +32,10 @@
                 </textarea>
             </div>
         </div>
+
+        <div v-if="step==3">
+            <MyPage :one=1></MyPage>
+        </div>
         
     </div>
 </template>
@@ -40,6 +44,7 @@
 import Post from '@/components/Post.vue';
 import FilterBox from '@/components/FilterBox.vue';
 import filters from '@/assets/filter'
+import MyPage from '@/components/MyPage.vue'
 
 export default {
     name: "Container",
@@ -51,6 +56,7 @@ export default {
     components: {
         Post,
         FilterBox,
+        MyPage
     },
     data(){
         return{

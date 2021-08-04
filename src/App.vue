@@ -3,13 +3,25 @@
     <ul class="header-button-left"  v-if="step==0">
       <li>Vuestagram</li>
     </ul>
+    <ul class="header-button-right white" v-if="step==0">
+        <li @click="step=3;">팔로워</li>
+      </ul>
     <div v-if="step>0">
-      <ul class="header-button-left">
+      <!--왼쪽-->
+      <ul class="header-button-left" v-if="step!==3">
         <li>X</li>
       </ul>
-      <ul class="logo">
+      <ul class="header-button-left" v-if="step==3">
+        <li @click="step=0">&lt;</li>
+      </ul>
+      <!--가운데-->
+      <ul class="logo" v-if="step!==3">
         <li>새 게시물</li>
       </ul>
+      <ul class="logo" v-if="step===3">
+        <li>팔로워</li>
+      </ul>
+      <!--오른쪽-->
       <ul class="header-button-right" v-if="step==1">
         <li @click="step++;">다음</li>
       </ul>
@@ -126,7 +138,7 @@ ul {
   list-style-type: none;
 }
 .logo {
-  width: 60px;
+  width: 80px;
   margin: auto;
   display: block;
   position: absolute;
@@ -134,6 +146,7 @@ ul {
   right: 0;
   top: 15px;
   color: white;
+  text-align: center;
 }
 .header {
   width: 100%;
@@ -164,6 +177,10 @@ ul {
   width: 50px;
   cursor: pointer;
   margin-top: 15px;
+  font-size: 14px;
+}
+.header-button-right.white{
+  color: white;
 }
 .flex-container{
   display: flex;
