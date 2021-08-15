@@ -13,9 +13,9 @@
 1 ) + 버튼 클릭시 게시글 작성 및 필터 적용 (clarendon) 화면 
 
 <div>
-  <img width="33%" src = "https://user-images.githubusercontent.com/66946182/129487354-751cf68a-dc8b-418f-86c4-cc3ebef4b6af.png">
-  <img width="33%" src = "https://user-images.githubusercontent.com/66946182/129487393-14f99198-078f-4f15-bef0-56d7375b9285.png">
- <img width="33%" src = "https://user-images.githubusercontent.com/66946182/129487442-525dbead-19bb-4a10-8e37-b35d784b1fc9.png">
+  <img width="32.5%" src = "https://user-images.githubusercontent.com/66946182/129487354-751cf68a-dc8b-418f-86c4-cc3ebef4b6af.png">
+  <img width="32.5%" src = "https://user-images.githubusercontent.com/66946182/129487393-14f99198-078f-4f15-bef0-56d7375b9285.png">
+ <img width="32.5%" src = "https://user-images.githubusercontent.com/66946182/129487442-525dbead-19bb-4a10-8e37-b35d784b1fc9.png">
 </div>
 
 <p></p>
@@ -29,28 +29,34 @@
 3 ) 더보기 버튼 클릭시 get 요청 통해서 게시물을 얻어옴 
 
 <img width="400" src="https://user-images.githubusercontent.com/66946182/129487563-4036bad6-ec17-4953-b0e8-8d05fc82f4ab.png">
+<p></p>
 
+4 ) 게시글 클릭시 좋아요 추가 / 한번 더 누를시 좋아요 취소 
 
+<img width="400" src="https://user-images.githubusercontent.com/66946182/129487812-04df0653-446e-493e-a115-14ea166a1ca5.png">
 
-## Project setup
-```
-npm install
-```
+<p></p>
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+5 ) 팔로워 페이지 및 검색 가능 
 
-### Compiles and minifies for production
-```
-npm run build
-```
+<div>
+  <img width="44%" src = "https://user-images.githubusercontent.com/66946182/129487859-0fe0b6f9-1d8c-4c72-ba78-a2c7eec57b2f.png">
+  <img width="44%" src = "https://user-images.githubusercontent.com/66946182/129487880-0a70c5e3-03ff-4b95-bdaa-99beddd114a4.png">
+</div>  
 
-### Lints and fixes files
-```
-npm run lint
-```
+### 📌 주요기능  
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- 게시글 작성 가능 
+- 인스타그램 필터 적용 가능 
+- 더보기 버튼을 통한 외부 데이터 요청 가능 
+- 팔로워 페이지 실시간 검색 가능 
+- 게시글 좋아요 및 좋아요 취소 가능 
+
+### ⏱ 개발기간
+
+2021.7.28 ~ 2021.8.4 (일주일)
+
+### 🖥 개발환경 
+
+- vue.js (axios, bootstrap, vuex)
+- vsCode
