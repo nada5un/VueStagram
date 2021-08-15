@@ -4,7 +4,7 @@
       <li>Vuestagram</li>
     </ul>
     <ul class="header-button-right white" v-if="step==0">
-        <li @click="step=3;">팔로워</li>
+        <li @click="step=3;">follow</li>
       </ul>
     <div v-if="step>0">
       <!--왼쪽-->
@@ -19,7 +19,7 @@
         <li>새 게시물</li>
       </ul>
       <ul class="logo" v-if="step===3">
-        <li>팔로워</li>
+        <li>followers</li>
       </ul>
       <!--오른쪽-->
       <ul class="header-button-right" v-if="step==1">
@@ -95,12 +95,14 @@ export default {
         // 요청 성공시 
         this.instaData.push(response.data);
         this.buttonCount++;
+        this.$store.commit("AddLikesPush");
       })
     },
     upload(e){
       let file = e.target.files;
       console.log(file[0]);
       this.imageUrl = URL.createObjectURL(file[0]);
+      console.log(this.imageUrl);
       this.step ++;
     },
     emitPostText(text){

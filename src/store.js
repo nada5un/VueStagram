@@ -24,6 +24,10 @@ const store = createStore({
         state.likes.unshift(0);
         state.isLiked.unshift(false);
     },
+    AddLikesPush(state){
+      state.likes.push(0);
+      state.isLiked.push(false);
+    },
     setPostMore(state,response){
         state.postMore = response;
     }
